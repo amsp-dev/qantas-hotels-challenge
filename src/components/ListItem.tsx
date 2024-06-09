@@ -1,18 +1,20 @@
 import styled from "@emotion/styled";
 import { ArrowRight } from "../assets/icons";
 import { getFriendlyKey } from "../utils";
+import { HotelOffer } from "../types";
 
 type ListItemProps = {
-  text: string;
-  to: string;
+  hotelOffer: HotelOffer;
 };
 
-function ListItem({ text, to }: ListItemProps) {
+function ListItem({ hotelOffer }: ListItemProps) {
   return (
-    <LinkElement data-cy={getFriendlyKey(text)} href={to}>
-      <LinkText data-cy={`${getFriendlyKey(text)}-title`}>{text}</LinkText>
+    <ListElement data-cy={getFriendlyKey(hotelOffer.id)}>
+      <LinkText data-cy={`${getFriendlyKey(hotelOffer.id)}-title`}>
+        {hotelOffer.property.title}
+      </LinkText>
       <ArrowRight />
-    </LinkElement>
+    </ListElement>
   );
 }
 
@@ -22,7 +24,7 @@ const LinkText = styled("span")({
   textDecoration: "underline",
 });
 
-const LinkElement = styled("a")({
+const ListElement = styled("div")({
   display: "flex",
   alignItems: "center",
   gap: ".5rem",

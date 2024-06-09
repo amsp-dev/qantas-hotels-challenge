@@ -6,7 +6,10 @@ const handlers =[
         // Simulate a delay
         await delay(1000);
         return HttpResponse.json({
-            ...data
+            ...data,
+            total: data.results.length,
+            // Simulate query coming back with API response
+            locationQueryParam: 'Sydney'
         })
     })
 ];

@@ -5,19 +5,33 @@ import DataList from "./components/DataList";
 
 function App() {
   return (
-    <>
-      <Heading>Vite / React Boilerplate</Heading>
-      <p>
-        This is a vite boilerplate with MSW and Cypress for React / Typescript
-        with @emotion/styled
-      </p>
+    <PageContainer>
+      <Header>
+        <Logo href="https://www.qantas.com/hotels" />
+      </Header>
       <DataList />
-    </>
+    </PageContainer>
   );
 }
 
 export default App;
 
-const Heading = styled("h1")({
-  letterSpacing: ".1rem",
+const Logo = styled("a")({
+  textIndent: "-9999px",
+  backgroundImage: "url(/img/qantas-logo.png)",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  display: "block",
+  width: 155,
+  aspectRatio: "412 / 80",
+});
+
+const Header = styled("header")({
+  width: "100%",
+  padding: "1rem 0",
+});
+
+const PageContainer = styled("div")({
+  padding: "0 1rem",
 });
