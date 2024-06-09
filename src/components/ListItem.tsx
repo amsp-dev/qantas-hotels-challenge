@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ArrowRight } from "../assets/icons";
+// import { ArrowRight } from "../assets/icons";
 import { getFriendlyKey } from "../utils";
 import { HotelOffer } from "../types";
 
@@ -9,22 +9,27 @@ type ListItemProps = {
 
 function ListItem({ hotelOffer }: ListItemProps) {
   return (
-    <ListElement data-cy={getFriendlyKey(hotelOffer.id)}>
-      <LinkText data-cy={`${getFriendlyKey(hotelOffer.id)}-title`}>
+    <Offer data-cy={getFriendlyKey(hotelOffer.id)}>
+      <PropertyTitle data-cy={`${getFriendlyKey(hotelOffer.id)}-title`}>
         {hotelOffer.property.title}
-      </LinkText>
-      <ArrowRight />
-    </ListElement>
+      </PropertyTitle>
+      <PropertyPrice data-cy={`${getFriendlyKey(hotelOffer.id)}-price`}>
+        {hotelOffer.offer.displayPrice.amount.toFixed(0)}
+        {hotelOffer.offer.displayPrice.currency}
+      </PropertyPrice>
+    </Offer>
   );
 }
 
 export default ListItem;
 
-const LinkText = styled("span")({
+const PropertyPrice = styled("span")({});
+
+const PropertyTitle = styled("span")({
   textDecoration: "underline",
 });
 
-const ListElement = styled("div")({
+const Offer = styled("div")({
   display: "flex",
   alignItems: "center",
   gap: ".5rem",

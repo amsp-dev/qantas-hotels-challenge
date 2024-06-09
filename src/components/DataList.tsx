@@ -9,19 +9,22 @@ function DataList() {
   const [data, setData] = useState<HotelOffer[] | []>([]);
   const [totalResults, setTotalResults] = useState<number>(0);
   const [locationQueryParam, setLocationQueryParam] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [sortBy, setSortBy] = useState<string>("desc");
 
   const getData = useCallback(async () => {
-    const response = await fetch(`/api/data`, {
+    setIsLoading(true);
+    const response = await fetch(`/api/data?sort=${sortBy}`, {
       headers: { responseType: "json" },
       method: "GET",
     });
     response.json().then((jsonResponse) => {
-      console.log(jsonResponse);
+      setIsLoading(false);
       setData(jsonResponse.results);
       setTotalResults(jsonResponse.total);
       setLocationQueryParam(jsonResponse.locationQueryParam);
     });
-  }, [setData]);
+  }, [setData, sortBy]);
 
   useEffect(() => {
     getData();
@@ -29,13 +32,13 @@ function DataList() {
     return () => {
       setData([]);
     };
-  }, []);
+  }, [sortBy]);
 
   return (
     <OfferListContainer>
       <OfferListHeader>
         <ResultSummary>
-          {totalResults && (
+          {totalResults && !isLoading && (
             <>
               <strong className="count">{totalResults}</strong>&nbsp;
               <em>hotels in</em>&nbsp;
@@ -46,13 +49,19 @@ function DataList() {
 
         <SortBy>
           <SortByLabel htmlFor="sort-by">Sort By</SortByLabel>
-          <SortBySelect id="sort-by">
+          <SortBySelect
+            id="sort-by"
+            value={sortBy}
+            onChange={(e) => {
+              setSortBy(e.currentTarget.value);
+            }}
+          >
             <option value="desc">Price (high-low)</option>
             <option value="asc">Price (low-high)</option>
           </SortBySelect>
         </SortBy>
       </OfferListHeader>
-      {data ? (
+      {data && !isLoading ? (
         <OfferListResults className="list-data">
           {data.map((item) => (
             <ListItem key={item.id} hotelOffer={item} />
