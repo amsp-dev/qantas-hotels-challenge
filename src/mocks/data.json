@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "title": "First Item Title",
+      "linkHref": "https://github.com"
+    },
+    {
+      "title": "Second Item Title",
+      "linkHref": "https://google.com"
+    },
+    {
+      "title": "Third Item Title",
+      "linkHref": "https://github.com"
+    }
+  ]
+}
