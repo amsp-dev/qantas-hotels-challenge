@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import "./App.css";
 
-import DataList from "./components/DataList";
+import OfferList from "./components/OfferList";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Header>
         <Logo href="https://www.qantas.com/hotels" />
       </Header>
-      <DataList />
+      <OfferList />
     </PageContainer>
   );
 }
@@ -29,9 +29,7 @@ const Logo = styled("a")({
 
 const Header = styled("header")({
   width: "100%",
-  padding: "1rem 0",
+  padding: "1rem",
 });
 
-const PageContainer = styled("div")({
-  padding: "0 1rem",
-});
+const PageContainer = styled("div")({});

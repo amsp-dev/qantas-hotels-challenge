@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
-import DataList from "./DataList";
+import OfferList from "./OfferList";
 
-describe("<DataList />", () => {
+describe("Render OfferList", () => {
   it("renders", () => {
     // see: https://on.cypress.io/mounting-react
-    cy.mount(<DataList />);
+    cy.mount(<OfferList />);
   });
 });

@@ -3,14 +3,14 @@ import styled from "@emotion/styled";
 
 import { HotelOffer } from "../types";
 // import { getFriendlyKey } from "../utils";
-import ListItem from "./ListItem";
+import OfferItem from "./Offer/Item";
 
-function DataList() {
+function OfferList() {
   const [data, setData] = useState<HotelOffer[] | []>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [totalResults, setTotalResults] = useState<number>(0);
   const [locationQueryParam, setLocationQueryParam] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [sortBy, setSortBy] = useState<string>("desc");
+  const [sortBy, setSortBy] = useState<string>("");
 
   const getData = useCallback(async () => {
     setIsLoading(true);
@@ -38,12 +38,20 @@ function DataList() {
     <OfferListContainer>
       <OfferListHeader>
         <ResultSummary>
-          {totalResults && !isLoading && (
+          {!isLoading ? (
             <>
-              <strong className="count">{totalResults}</strong>&nbsp;
-              <em>hotels in</em>&nbsp;
-              <strong className="location">{locationQueryParam}</strong>
+              {totalResults > 0 ? (
+                <>
+                  <strong className="count">{totalResults}</strong>&nbsp;
+                  <em>hotels in</em>&nbsp;
+                  <strong className="location">{locationQueryParam}</strong>
+                </>
+              ) : (
+                <em>No Results</em>
+              )}
             </>
+          ) : (
+            <Loading className="loading">loading...</Loading>
           )}
         </ResultSummary>
 
@@ -56,31 +64,35 @@ function DataList() {
               setSortBy(e.currentTarget.value);
             }}
           >
+            <option value="">Default</option>
             <option value="desc">Price (high-low)</option>
             <option value="asc">Price (low-high)</option>
           </SortBySelect>
         </SortBy>
       </OfferListHeader>
-      {data && !isLoading ? (
+      {data && !isLoading && (
         <OfferListResults className="list-data">
           {data.map((item) => (
-            <ListItem key={item.id} hotelOffer={item} />
+            <OfferItem key={item.id} hotelOffer={item} />
           ))}
         </OfferListResults>
-      ) : (
-        <Loading className="loading">loading...</Loading>
       )}
     </OfferListContainer>
   );
 }
 
-export default DataList;
+export default OfferList;
 
 const SortBySelect = styled("select")({});
-const SortByLabel = styled("label")({});
+
+const SortByLabel = styled("label")({
+  fontWeight: "bold",
+});
 
 const SortBy = styled("div")({
   alignSelf: "flex-end",
+  gap: ".5rem",
+  display: "flex",
 });
 
 const ResultSummary = styled("div")({
@@ -92,14 +104,21 @@ const OfferListHeader = styled("div")({
   alignItems: "center",
   flexDirection: "row",
   justifyContent: "space-between",
+  marginBottom: "1rem",
+  padding: "0 1rem",
 });
 
 const OfferListContainer = styled("div")({});
 
 const OfferListResults = styled("div")({
   fontSize: "1.1rem",
+  gap: ".5rem",
+  display: "flex",
+  flexDirection: "column",
+  padding: "0 1rem",
 });
 
-const Loading = styled("p")({
+const Loading = styled("em")({
   fontWeight: "bold",
+  textAlign: "left",
 });

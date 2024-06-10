@@ -1,16 +1,20 @@
+export type Rating = {
+  ratingValue: number;
+  ratingType: "star" | "self";
+};
+
+export type PreviewImage = {
+  url: string;
+  caption: string;
+  imageType: string;
+};
+
 export type Property = {
   propertyId: string;
   title: string;
   address: string[];
-  previewImage: {
-    url: string;
-    caption: string;
-    imageType: string;
-  };
-  rating: {
-    ratingValue: number;
-    ratingType: "star" | "self";
-  };
+  previewImage: PreviewImage;
+  rating: Rating;
 };
 
 type PriceOption = {
@@ -18,14 +22,16 @@ type PriceOption = {
   currency: string;
 }
 
+export type OfferPromotion { 
+  title: string;
+  type: "MEMBER" | "CAMPAIGN"
+}
+
 export type Offer = {
-  promotion: { 
-    title: string;
-    type: "MEMBER" | "CAMPAIGN"
-  };
+  promotion?: OfferPromotion;
   name: string;
   displayPrice: PriceOption;
-  savings: PriceOption;
+  savings: PriceOption | null;
   cancellationOption: {
     cancellationType: string;
   };

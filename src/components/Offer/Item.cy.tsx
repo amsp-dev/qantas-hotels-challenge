@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-import ListItem from "./ListItem";
+import ListItem from "./Item";
 import { getFriendlyKey } from "../utils";
 
-describe("ListItem w/ right arrow", () => {
+describe("OfferItem", () => {
   it("renders", () => {
     // see: https://on.cypress.io/mounting-react - known issue with cy.mount type error
     cy.mount(<ListItem text="Test Text" to="https://www.google.com" />);
