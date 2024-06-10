@@ -22,6 +22,8 @@ To open Cypress:
 npx cypress open
 ```
 
+Please note, I have noticed some issues when changing between Component and E2E testing, and some issues when using electron, easily solved by reopening Cypress
+
 Thanks!
 
 ### Approach

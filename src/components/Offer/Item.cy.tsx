@@ -46,13 +46,13 @@ describe("OfferItem", () => {
     cy.mount(<OfferItem hotelOffer={hotelOffer} />);
 
     // Test the text is correct
-    cy.get(`[data-cy=${getFriendlyKey("offer-item")}]`)
+    cy.get(`[data-cy=offer-item]`)
       .should("exist")
       .and("contain", "Primus Hotel Sydney")
       .and("contain", "$375");
 
     // // Test the image path is correct
-    cy.get(`[data-cy=${getFriendlyKey("mesq6mggyn")}] img`).should(
+    cy.get(`[data-cy=offer-item] img`).should(
       "have.attr",
       "src",
       "https://unsplash.it/145/125/?random"
