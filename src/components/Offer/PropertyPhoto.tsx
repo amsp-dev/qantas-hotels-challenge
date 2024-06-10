@@ -15,10 +15,12 @@ function OfferPhoto({ promotion, previewImage }: OfferPhotoProps) {
         </OfferLabel>
       )}
       {previewImage && previewImage.url && (
-        <PropertyImage
-          src={previewImage.url}
-          alt={previewImage.caption ? previewImage.caption : undefined}
-        />
+        <PropertyImageContainer>
+          <PropertyImage
+            src={previewImage.url}
+            alt={previewImage.caption ? previewImage.caption : undefined}
+          />
+        </PropertyImageContainer>
       )}
     </Photo>
   );
@@ -44,9 +46,17 @@ const PropertyImage = styled("img")({
   objectFit: "cover",
 });
 
+const PropertyImageContainer = styled("div")({
+  backgroundColor: "#EEEEEE",
+  minWidth: 145,
+  minHeight: 125,
+});
+
 const Photo = styled("div")({
   display: "block",
   position: "relative",
   flexGrow: 0,
   flexShrink: 0,
+  paddingTop: ".325rem",
+  paddingBottom: ".325rem",
 });

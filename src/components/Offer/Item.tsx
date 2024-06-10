@@ -35,6 +35,7 @@ const Details = styled("div")({
   flexGrow: 1,
   justifyContent: "space-between",
   alignSelf: "stretch",
+  borderTop: "1px solid #E5E5E5",
 });
 
 const Offer = styled("div")({

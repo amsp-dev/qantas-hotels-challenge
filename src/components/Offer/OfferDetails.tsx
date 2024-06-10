@@ -9,7 +9,7 @@ function OfferDetails({ offer }: OfferItemProps) {
   return (
     <OfferDetailsContainer>
       <OfferTermsRow>
-        1 night total
+        <strong>1</strong> night total
         {offer.displayPrice.currency
           ? ` (${offer.displayPrice.currency})`
           : undefined}
@@ -31,26 +31,42 @@ function OfferDetails({ offer }: OfferItemProps) {
 
 export default OfferDetails;
 
-const Price = styled("div")({});
-
 const SavingsContainer = styled("div")({
-  minHeight: 20,
+  minHeight: "1.6rem",
 });
 
 const SavingsRow = styled("div")({
-  fontWeight: "bold",
+  fontWeight: 400,
+  color: "#E40000",
 });
 
-const OfferTermsRow = styled("div")({});
+const OfferTermsRow = styled("div")({
+  color: "#676767",
+  fontSize: ".65rem",
+  lineHeight: ".65rem",
+});
 
-const PricePrefix = styled("span")({});
+const Price = styled("div")({
+  fontSize: "1.8rem",
+  lineHeight: "1.4rem",
+});
+
+const PricePrefix = styled("span")({
+  marginRight: ".2rem",
+  lineHeight: "1.1rem",
+});
 
 const PriceRow = styled("div")({
   display: "flex",
+  alignItems: "flex-start",
+  justifyContent: "flex-end",
 });
 
 const OfferDetailsContainer = styled("div")({
   flexGrow: 0,
   flexShrink: 0,
   alignSelf: "flex-end",
+  display: "flex",
+  flexDirection: "column",
+  gap: ".5rem",
 });

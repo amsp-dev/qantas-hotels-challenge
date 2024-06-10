@@ -8,11 +8,12 @@ const handlers =[
         const sort = url.searchParams.get('sort');
 
         // Simulate a delay when loading an API response...
-        await delay(1000);
-        return HttpResponse.json({
+        await delay(500);
+        // Apply sorting to data
+        const sortedData = {
             ...data,
-            // Apply sorting to data
-            results: data.results.sort((a, b) => {
+            // Apply sorting to copy of array data
+            results: [...data.results].sort((a, b) => {
                 const displayPriceA = a.offer.displayPrice.amount;
                 const displayPriceB = b.offer.displayPrice.amount;
                 if(sort === 'desc') {
@@ -25,6 +26,10 @@ const handlers =[
             total: data.results.length,
             // Simulate query param coming back with API response
             locationQueryParam: 'Sydney'
+        }
+        
+        return HttpResponse.json({
+            ...sortedData
         })
     })
 ];
