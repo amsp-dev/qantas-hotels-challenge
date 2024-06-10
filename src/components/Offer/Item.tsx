@@ -20,7 +20,7 @@ function OfferItem({ hotelOffer }: OfferItemProps) {
         promotion={offer.promotion || undefined}
       />
       <Details>
-        <PropertyDetails property={property} offer={offer} />
+        <PropertyDetails id={id} property={property} offer={offer} />
         <OfferDetails offer={offer} />
       </Details>
     </Offer>

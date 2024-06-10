@@ -48,4 +48,5 @@ const Photo = styled("div")({
   display: "block",
   position: "relative",
   flexGrow: 0,
+  flexShrink: 0,
 });

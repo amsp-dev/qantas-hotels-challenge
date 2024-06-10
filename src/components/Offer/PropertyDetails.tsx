@@ -5,9 +5,10 @@ import Rating from "./Rating";
 type PropertyDetailsProps = {
   property: Property;
   offer: Offer;
+  id: string;
 };
 
-function PropertyDetails({ property, offer }: PropertyDetailsProps) {
+function PropertyDetails({ id, property, offer }: PropertyDetailsProps) {
   return (
     <PropertyDetailsContainer>
       <TitleRatingRow>
@@ -16,6 +17,7 @@ function PropertyDetails({ property, offer }: PropertyDetailsProps) {
           <Rating
             value={property.rating.ratingValue}
             type={property.rating.ratingType}
+            titleKey={id}
           />
         </RatingContainer>
       </TitleRatingRow>
@@ -23,7 +25,7 @@ function PropertyDetails({ property, offer }: PropertyDetailsProps) {
       <RoomName>{offer.name}</RoomName>
       {offer.cancellationOption?.cancellationType &&
         offer.cancellationOption.cancellationType === "FREE_CANCELLATION" && (
-          <Cancellation>Free Cancellation</Cancellation>
+          <Cancellation>Free cancellation</Cancellation>
         )}
     </PropertyDetailsContainer>
   );
@@ -32,7 +34,7 @@ function PropertyDetails({ property, offer }: PropertyDetailsProps) {
 export default PropertyDetails;
 
 const Cancellation = styled("div")({
-  color: "#00AA6C",
+  color: "#66887B",
   justifySelf: "flex-end",
   fontSize: ".825rem",
   marginTop: "auto",
@@ -56,15 +58,16 @@ const RatingContainer = styled("div")({
 const TitleRatingRow = styled("div")({
   display: "flex",
   justifyContent: "stretch",
-  gap: "1rem",
+  gap: ".5rem",
   marginTop: ".5rem",
   width: "100%",
+  alignItems: "center",
 });
 
 const Title = styled("h3")({
   fontWeight: 500,
-  fontSize: "1.2rem",
-  lineHeight: "1rem",
+  fontSize: "1.3rem",
+  lineHeight: "1.5rem",
   margin: 0,
   overflow: "hidden",
   textOverflow: "ellipsis",
