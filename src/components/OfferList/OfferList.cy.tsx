@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import OfferList from "./OfferList";
+import OfferList from "./List";
 
 describe("Render OfferList", () => {
   it("renders with a summary header and select to change the list sort", () => {

@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import styled from "@emotion/styled";
 
-import { HotelOffer } from "../types";
+import { HotelOffer } from "../../types";
 // import { getFriendlyKey } from "../utils";
-import OfferItem from "./Offer/Item";
+import OfferItem from "../Offer/Item";
 
 function OfferList() {
   const [data, setData] = useState<HotelOffer[] | []>([]);

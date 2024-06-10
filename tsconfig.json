@@ -20,6 +20,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/components/OfferList.cy.tsx", "src/components/OfferItem.cy.tsx"],
+  "include": [
+    "src",
+    "src/components/OfferList/List.cy.tsx",
+    "src/components/Offer/Item.cy.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

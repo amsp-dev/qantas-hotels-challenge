@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import "./App.css";
 
-import OfferList from "./components/OfferList";
+import OfferList from "./components/OfferList/List";
 
 function App() {
   return (
