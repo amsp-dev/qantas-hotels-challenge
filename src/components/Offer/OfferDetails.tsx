@@ -7,7 +7,7 @@ type OfferItemProps = {
 
 function OfferDetails({ offer }: OfferItemProps) {
   return (
-    <OfferDetailsContainer>
+    <OfferDetailsContainer data-cy="offer-details">
       <OfferTermsRow>
         <strong>1</strong> night total
         {offer.displayPrice.currency

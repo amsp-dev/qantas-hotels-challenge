@@ -54,7 +54,7 @@ function Rating({ value, type, titleKey }: RatingProps) {
   const offsetPercentageValue = value - greatestWholeNumber;
 
   return (
-    <RatingContainer>
+    <RatingContainer data-cy={titleKey}>
       {[...Array(5)].map((_, i) => {
         let offsetPercentage = 100;
         if (i === greatestWholeNumber) {
@@ -62,18 +62,12 @@ function Rating({ value, type, titleKey }: RatingProps) {
         } else if (i > greatestWholeNumber) {
           offsetPercentage = 0;
         }
-        console.log(
-          i,
-          offsetPercentage,
-          greatestWholeNumber,
-          offsetPercentageValue
-        );
         return (
           <RatingItem
             key={`rating-item-${i}`}
             titleKey={titleKey}
             offset={true}
-            offsetPercentage={`${offsetPercentage}%`}
+            offsetPercentage={`${offsetPercentage.toFixed(0)}%`}
             type={type}
             index={i}
           />

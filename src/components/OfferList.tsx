@@ -36,7 +36,7 @@ function OfferList() {
 
   return (
     <OfferListContainer>
-      <OfferListHeader>
+      <OfferListHeader data-cy="list-header">
         <ResultSummary>
           {!isLoading ? (
             <>
@@ -51,7 +51,7 @@ function OfferList() {
               )}
             </>
           ) : (
-            <Loading className="loading">loading...</Loading>
+            <Loading className="loading">Loading...</Loading>
           )}
         </ResultSummary>
 
@@ -71,7 +71,7 @@ function OfferList() {
         </SortBy>
       </OfferListHeader>
       {data && !isLoading && (
-        <OfferListResults className="list-data">
+        <OfferListResults data-cy="list-results" className="list-data">
           {data.map((item) => (
             <OfferItem key={item.id} hotelOffer={item} />
           ))}

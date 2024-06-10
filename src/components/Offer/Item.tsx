@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 // import { ArrowRight } from "../assets/icons";
-import { getFriendlyKey } from "../../utils";
 import { HotelOffer } from "../../types";
 
 import PropertyPhoto from "./PropertyPhoto";
@@ -14,7 +13,7 @@ type OfferItemProps = {
 function OfferItem({ hotelOffer }: OfferItemProps) {
   const { id, property, offer } = hotelOffer;
   return (
-    <Offer data-cy={getFriendlyKey(id)}>
+    <Offer data-cy="offer-item">
       <PropertyPhoto
         previewImage={property.previewImage}
         promotion={offer.promotion || undefined}

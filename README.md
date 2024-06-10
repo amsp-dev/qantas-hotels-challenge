@@ -1,41 +1,8 @@
-# React + TypeScript + Vite
+# Qantas Hotels Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This package is based on a default Vite / Typescript app, with MSW simulating an API and Cypress for E2E and Component testing
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-## Development path
-
-First I created a project using the vite package creator
-
-Then I followed the steps outlined [here](https://medium.com/@leuzga/setting-up-a-react-project-with-vite-and-msw-for-api-mocking-2674469cdbb1) to implement a MSW to serve / simulate the API:
-
-Installed Cypress and added some basic tests
+This package was created and developed using Node v18.18.2 (NPM 9.8.1)
 
 ## To run
 
@@ -43,10 +10,20 @@ Installed Cypress and added some basic tests
 npm install
 ```
 
+Then
+
 ```
 npm run dev
 ```
 
+To open Cypress:
+
 ```
 npx cypress open
 ```
+
+Thanks!
+
+### Approach
+
+I used a mock API service in this approach to simulate the realities of pushing data around, other than that I tried to keep the package dependencies to a minimum. I opted for slightly more complex approach on the Ratings module than I would've like; Mathematical computations like the ones in the Ratings component are probably not desireable in large lists, had I better skills in Figma, the use of an SVG clipping mask to cover a solid percentage bar might be more performant in production.

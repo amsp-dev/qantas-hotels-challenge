@@ -1,30 +1,61 @@
 /// <reference types="cypress" />
 
-import ListItem from "./Item";
-import { getFriendlyKey } from "../utils";
+import OfferItem from "./Item";
+import { getFriendlyKey } from "../../utils";
+import { HotelOffer } from "../../types";
+
+const hotelOffer: HotelOffer = {
+  id: "mesq6mggyn",
+  property: {
+    propertyId: "P107802",
+    title: "Primus Hotel Sydney",
+    address: ["339 Pitt St", "Sydney"],
+    previewImage: {
+      url: "https://unsplash.it/145/125/?random",
+      caption: "Image of Primus Hotel Sydney",
+      imageType: "PRIMARY",
+    },
+    rating: {
+      ratingValue: 5,
+      ratingType: "self",
+    },
+  },
+  offer: {
+    promotion: {
+      title: "Exclusive Deal",
+      type: "MEMBER",
+    },
+    name: "Deluxe King",
+    displayPrice: {
+      amount: 375.0,
+      currency: "AUD",
+    },
+    savings: {
+      amount: 28.0,
+      currency: "AUD",
+    },
+    cancellationOption: {
+      cancellationType: "FREE_CANCELLATION",
+    },
+  },
+};
 
 describe("OfferItem", () => {
-  it("renders", () => {
+  it("renders with a title, price, and image,", () => {
     // see: https://on.cypress.io/mounting-react - known issue with cy.mount type error
-    cy.mount(<ListItem text="Test Text" to="https://www.google.com" />);
+    cy.mount(<OfferItem hotelOffer={hotelOffer} />);
 
-    // Test the link is passing through
-    cy.get(`[data-cy=${getFriendlyKey("Test Text")}`)
-      .should("have.attr", "href")
-      .should("not.be.empty")
-      .and("contain", "google");
+    // Test the text is correct
+    cy.get(`[data-cy=${getFriendlyKey("offer-item")}]`)
+      .should("exist")
+      .and("contain", "Primus Hotel Sydney")
+      .and("contain", "$375");
 
-    // Test the text is displaying
-    cy.get(`[data-cy=${getFriendlyKey("Test Text")}`).should(
-      "contain.text",
-      "Test Text"
+    // // Test the image path is correct
+    cy.get(`[data-cy=${getFriendlyKey("mesq6mggyn")}] img`).should(
+      "have.attr",
+      "src",
+      "https://unsplash.it/145/125/?random"
     );
-
-    // Test that the arrow is displaying after the text
-    cy.get(`[data-cy=${getFriendlyKey("Test Text")}`)
-      .children("span")
-      .contains("Test Text")
-      .next("svg")
-      .should("exist");
   });
 });
