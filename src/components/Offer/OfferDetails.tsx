@@ -51,5 +51,5 @@ const PriceRow = styled("div")({
 
 const OfferDetailsContainer = styled("div")({
   flexGrow: 0,
-  justifySelf: "flex-end",
+  alignSelf: "flex-end",
 });

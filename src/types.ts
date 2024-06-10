@@ -22,7 +22,7 @@ type PriceOption = {
   currency: string;
 }
 
-export type OfferPromotion { 
+export type OfferPromotion = { 
   title: string;
   type: "MEMBER" | "CAMPAIGN"
 }

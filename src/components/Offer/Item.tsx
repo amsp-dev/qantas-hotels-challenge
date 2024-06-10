@@ -20,12 +20,8 @@ function OfferItem({ hotelOffer }: OfferItemProps) {
         promotion={offer.promotion || undefined}
       />
       <Details>
-        <PropertyInfo>
-          <PropertyDetails property={property} />
-        </PropertyInfo>
-        <PricingInfo>
-          <OfferDetails offer={offer} />
-        </PricingInfo>
+        <PropertyDetails property={property} offer={offer} />
+        <OfferDetails offer={offer} />
       </Details>
     </Offer>
   );
@@ -33,27 +29,19 @@ function OfferItem({ hotelOffer }: OfferItemProps) {
 
 export default OfferItem;
 
-const PricingInfo = styled("div")({
-  flexGrow: 0,
-  justifySelf: "flex-end",
-});
-
-const PropertyInfo = styled("div")({
-  flexGrow: 1,
-  justifySelf: "flex-start",
-});
-
 const Details = styled("div")({
+  position: "relative",
   display: "flex",
   flexGrow: 1,
-  justifyContent: "stretch",
+  justifyContent: "space-between",
+  alignSelf: "stretch",
 });
 
 const Offer = styled("div")({
   display: "flex",
   justifyContent: "stretch",
-  alignItems: "center",
-  gap: ".5rem",
+  alignItems: "flex-start",
+  gap: "1rem",
   "&, &:hover": {
     color: "#000000",
   },

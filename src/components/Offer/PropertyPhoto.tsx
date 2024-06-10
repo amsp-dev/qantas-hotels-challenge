@@ -44,7 +44,7 @@ const PropertyImage = styled("img")({
   objectFit: "cover",
 });
 
-const Photo = styled("span")({
+const Photo = styled("div")({
   display: "block",
   position: "relative",
   flexGrow: 0,
