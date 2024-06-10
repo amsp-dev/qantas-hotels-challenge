@@ -35,6 +35,7 @@ const Details = styled("div")({
   justifyContent: "space-between",
   alignSelf: "stretch",
   borderTop: "1px solid #E5E5E5",
+  gap: "2rem",
 });
 
 const Offer = styled("div")({

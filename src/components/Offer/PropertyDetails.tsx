@@ -58,7 +58,7 @@ const RatingContainer = styled("div")({
 const TitleRatingRow = styled("div")({
   display: "flex",
   justifyContent: "stretch",
-  gap: ".5rem",
+  gap: "1rem",
   marginTop: ".5rem",
   width: "100%",
   alignItems: "center",
